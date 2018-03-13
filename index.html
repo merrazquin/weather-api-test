@@ -20,6 +20,9 @@
             <input type="text" placeholder="Zip Code">
             <button type="button" class="query_btn btn btn-default btn-sm">Search</button>
             <br>
+            <button type="button" class="btn btn-default" id="convertToCelsius">Convert to Celsius</button>
+            <br>
+            <button type="button" class="btn btn-default" id="convertToFahrenheit">Convert to Fahrenheit</button>
         </div>
     </div>
 
@@ -69,6 +72,23 @@
                 $("#temperature").html(json.main.temp);
                 $("#pressure").html(json.main.pressure);
                 $("#humidity").html(json.main.humidity);
+            });
+
+            // Optional Code for temperature conversion
+            var fahrenheit = true;
+
+            $("#convertToCelsius").click(function () {
+                if (fahrenheit) {
+                    $("#temperature").text(((($("#temperature").text() - 32) * 5) / 9));
+                }
+                fahrenheit = false;
+            });
+
+            $("#convertToFahrenheit").click(function () {
+                if (fahrenheit == false) {
+                    $("#temperature").text((($("#temperature").text() * (9 / 5)) + 32));
+                }
+                fahrenheit = true;
             });
         });
     </script>
